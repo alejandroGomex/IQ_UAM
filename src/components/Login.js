@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  TouchableOpacity,
   View,
   TextInput,
 } from "react-native";
@@ -22,7 +23,7 @@ export const Login = ({ modalLogin, setModalLogin }) => {
   const [userPassword, setUserPassword] = useState("");
   const [accesToken, setAccesToken] = React.useState(null);
   const [user, setUser] = React.useState(null);
-  const [request, respone, promptAsync] = Google.useIdTokenAuthRequest({
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
       "515494001332-aksh9pt6qig1e612akteu9s1ho6ovj3e.apps.googleusercontent.com",
     iosClientId:
@@ -31,6 +32,32 @@ export const Login = ({ modalLogin, setModalLogin }) => {
       "515494001332-d1qanfabqbp5tfrlst7no4a5hk8k63no.apps.googleusercontent.com",
   });
 
+  React.useEffect(() => {
+    if (response?.type === "success") {
+      setAccesToken(response.authentication.accessToken);
+      accesToken && fetchUserInfo();
+    }
+  }, [response, accesToken]);
+
+  async function fetchUserInfo() {
+    let response = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+      headers: {
+        Authorization: `Bearer ${accesToken}`,
+      },
+    });
+    const useInfo = await response.json();
+    setUser(useInfo);
+  }
+
+  const showUserInfo = () => {
+    if (user) {
+      <View style={styles.ViewLogin}>
+        <Text style={styles.textAuth}>Welcome</Text>
+        <Image style={styles.userimage}></Image>
+        <Text style={styles.textAuth}>{user.name}</Text>
+      </View>;
+    }
+  };
   return (
     <Modal animationType='slide' visible={modalLogin}>
       <View>
@@ -39,6 +66,26 @@ export const Login = ({ modalLogin, setModalLogin }) => {
       </View>
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
+        {user && <showUserInfo />}
+        {user === null && (
+          <>
+            <Text style={{ fontSize: 35, fontWeight: "bold" }}>Welcome</Text>
+            <Text
+              style={{
+                fontSize: 25,
+                fontWeight: "bold",
+                marginBottom: 20,
+                color: "gray",
+              }}></Text>
+            <TouchableOpacity
+              disabled={!request}
+              onPress={() => {
+                promptAsync();
+              }}>
+              <Image source={require("../../assets/loginImage.png")} style={{width:300,height:40}}></Image>
+            </TouchableOpacity>
+          </>
+        )}
       </View>
 
       {/*<Pressable
@@ -77,5 +124,20 @@ const styles = StyleSheet.create({
     elevation: 5,
     marginLeft: 25,
     marginTop: 20,
+  },
+  ViewLogin: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textAuth: {
+    fontSize: 35,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  userimage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
 });
