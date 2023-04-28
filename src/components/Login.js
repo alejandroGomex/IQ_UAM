@@ -1,3 +1,5 @@
+import * as WebBrowser from "expo-web-browser";
+import * as Google from "expo-auth-session/providers/google";
 import React, { useState, useEffect } from "react";
 import ColorBar from "../Tools/ColorBar";
 import {
@@ -11,12 +13,23 @@ import {
   View,
   TextInput,
 } from "react-native";
+WebBrowser.maybeCompleteAuthSession();
 //clientId web:"515494001332-aksh9pt6qig1e612akteu9s1ho6ovj3e.apps.googleusercontent.com"
 // ios:"515494001332-oh2l8qmrpd2jv646utsckrlgivjc99jj.apps.googleusercontent.com"
-
+//Android : 515494001332-d1qanfabqbp5tfrlst7no4a5hk8k63no.apps.googleusercontent.com
 export const Login = ({ modalLogin, setModalLogin }) => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [accesToken, setAccesToken] = React.useState(null);
+  const [user, setUser] = React.useState(null);
+  const [request, respone, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId:
+      "515494001332-aksh9pt6qig1e612akteu9s1ho6ovj3e.apps.googleusercontent.com",
+    iosClientId:
+      "515494001332-oh2l8qmrpd2jv646utsckrlgivjc99jj.apps.googleusercontent.com",
+    androidClientId:
+      "515494001332-d1qanfabqbp5tfrlst7no4a5hk8k63no.apps.googleusercontent.com",
+  });
 
   return (
     <Modal animationType='slide' visible={modalLogin}>
