@@ -1,16 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { ImageBackground, Pressable, Modal, SafeAreaView, StyleSheet, Text, View, TextInput, Alert } from 'react-native';
-import { RuedaInteligencia } from './src/RuedaInteligencia';
-import { TiposInteligencia } from './src/TiposInteligencia';
+import Gif from "react-native-gif";
+import {
+  ImageBackground,
+  Pressable,
+  Modal,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Alert,
+  Image,
+  ScrollView,
+} from "react-native";
+import { RuedaInteligencia } from "./src/components/RuedaInteligencia";
+import { TiposInteligencia } from "./src/components/TiposInteligencia";
+import { Login } from "./src/components/Login";
 
 export default function App() {
-  const [userName, setUserName] = useState("")
-  const [userPassword, setUserPassword] = useState("")
-  const [modalRegistro, setModalRegistro] = useState(false)
-  const [modalRueda, setModalRueda] = useState(false)
-  const [registeredUsers, setRegisteredUsers] = useState([])
-  const [user, setUser] = useState(null)
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [modalRegistro, setModalRegistro] = useState(false);
+  const [modalLogin, setModalLogin] = useState(false);
+  const [modalRueda, setModalRueda] = useState(false);
+  const [registeredUsers, setRegisteredUsers] = useState([]);
+  const [user, setUser] = useState(null);
   /* const fields = {
     "Nombre Usuario": userName,
     "Contraseña": userPassword,
@@ -37,73 +52,101 @@ export default function App() {
    */
 
   return (
-    <Modal>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <View>
+          <Text style={styles.title}>
+            IQ TEST {""}
+            <Text style={styles.titleBold}>UAM® {"  "}</Text>
+            <Image
+              style={styles.logo}
+              source={require("./assets/logo-uam.png")}
+            />
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.subtitle}>
+            {"\n"}
+            {"\n"}
+            Familia UAM {"\n"} tenenmos para ti este nuevo reto de {"\n"}
+            desafíos mentales que pondrán a prueba{"\n"}tus habilidades
+            cognitivas.
+            {"\n"}
+            {"\n"}
+            <Text style={styles.titleBold}>¿ESTÁS LISTO?</Text>
+          </Text>
+          <Image
+            style={styles.image}
+            source={require("./assets/MentalI.png")}
+          />
+        </View>
 
-    <ImageBackground
-      source={require('./assets/Logos_UAM-08.png')}
-      resizeMode="cover"
-      style={styles.backCover}
-    >
-    </ImageBackground>
-    <View style={styles.square}>
-      <Text style={{ fontSize: 24, fontFamily: 'Arial', fontWeight: 'bold', color: 'white', marginTop: 60, marginLeft: 50, alignContent:'center' }}>Iq test UAM®</Text>
-    </View>
-    <View style={styles.campoUsuario}>
-      <Text style={styles.text}>Nombre de usuario</Text>
-      <TextInput
-        placeholder="Ej: alejandro.gomezg"
-        placeholderTextColor={"#000000c0"}
-        style={styles.input}
-        value={userName}
-        onChangeText={setUserName}
-      ></TextInput>
-    </View>
-    <View style={styles.campoContraseña}>
-      <Text style={styles.text}>Contraseña </Text>
-      <TextInput
-        placeholder="Ej: *****"
-        placeholderTextColor={"#000000c0"}
-        style={styles.input}
-        value={userPassword}
-        onChangeText={setUserPassword}
-      ></TextInput>
-    </View>
-    <View style={styles.buttons}>
-      <Pressable style={[styles.btn, styles.btnAgregar]}
-        onPress={() => { setModalRueda(true)}}
-      >
-        <RuedaInteligencia
-          modalRueda={modalRueda}
-          setModalRueda={setModalRueda}
-        ></RuedaInteligencia>
-        
-        <Text style={styles.text}>Ingresar</Text>
-      </Pressable>
-     {/*  <Pressable onPress={() => { setModalRegistro(true) }} style={[styles.btn, styles.btnRegistrar]} >
-        <Text style={styles.text}>Registrarse</Text>
-      </Pressable> */}
-    </View>
-    {/* <Registro
-      modalRegistro={modalRegistro}
-      setModalRegistro={setModalRegistro}
-      registeredUsers={registeredUsers}
-      setRegisteredUsers={setRegisteredUsers}
-      user={user}
-      setUser={setUser}
-    ></Registro> */}
-        <Pressable onPress={() => {}} style={[styles.btn, styles.btnGoogle]} >
-        <Text style={styles.text}>Iniciar Sesion con Google</Text>
-      </Pressable>
-  </Modal>
+        <Pressable
+          style={styles.btn}
+          onPress={() => {
+            setModalLogin(true);
+          }}>
+          <Login modalLogin={modalLogin} setModalLogin={setModalLogin}></Login>
+
+          <Text style={styles.subtitle}>INICIAR TEST</Text>
+        </Pressable>
+
+        <View style={styles.buttons}>
+          <Pressable
+            style={[styles.btn, styles.btnAgregar]}
+            onPress={() => {
+              setModalRueda(true);
+            }}>
+            <RuedaInteligencia
+              modalRueda={modalRueda}
+              setModalRueda={setModalRueda}></RuedaInteligencia>
+
+            <Text style={styles.text}>Ingresar</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              setModalRegistro(true);
+            }}
+            style={[styles.btn, styles.btnRegistrar]}>
+            <Text style={styles.text}>Registrarse</Text>
+          </Pressable>
+        </View>
+        {/*<Registro
+        modalRegistro={modalRegistro}
+        setModalRegistro={setModalRegistro}
+        registeredUsers={registeredUsers}
+        setRegisteredUsers={setRegisteredUsers}
+        user={user}
+        setUser={setUser}></Registro>*/}
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#0069a3",
+    marginTop: 25,
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 22,
+    color: "#FFFFFF",
+    fontWeight: "800",
+    marginTop: 20,
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 22,
+    color: "#FFFFFF",
+    fontWeight: "500",
+    fontSize: 20,
+  },
+  titleBold: {
+    fontWeight: "900",
+    color: "#f4d73b",
+    alignContent: "center",
   },
   backCover: {
     position: "absolute",
@@ -118,8 +161,8 @@ const styles = StyleSheet.create({
   square: {
     width: 500,
     height: 150,
-    justifyContent: 'center',
-    backgroundColor: '#0069A3',
+    justifyContent: "center",
+    backgroundColor: "#0069A3",
   },
   input: {
     backgroundColor: "#FFFFFF",
@@ -128,18 +171,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   text_btn_user_add: {
-    color: '#FCFCFC',
-    textAlign: 'center',
-    fontWeight: 'bold',
+    color: "#FCFCFC",
+    textAlign: "center",
+    fontWeight: "bold",
     fontSize: 16,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   text: {
     fontSize: 12,
-    fontFamily: 'Arial',
-    fontWeight: 'bold',
-    color: 'black',
-    marginTop: 0
+    fontWeight: "bold",
+    color: "black",
+    marginTop: 0,
   },
   campoUsuario: {
     marginTop: 250,
@@ -147,34 +189,45 @@ const styles = StyleSheet.create({
     marginRight: 50,
     opacity: 0.9,
     marginBottom: 50,
-    borderColor: 'black'
+    borderColor: "black",
   },
   campoContraseña: {
     marginLeft: 50,
     marginRight: 50,
     opacity: 0.9,
     marginBottom: 50,
-    borderColor: 'black'
+    borderColor: "black",
   },
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 15,
   },
   btn: {
-    paddingVertical: 15,
-    paddingHorizontal: 50,
-    borderRadius: 45,
-    marginRight: 20,
-    marginLeft: 30,
+    backgroundColor: "#f4d73b",
+    padding: 10,
+    marginTop: 30,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    backgroundColor: "#F9C91A",
   },
   btnAgregar: {
-    backgroundColor: "#0069A3"
+    backgroundColor: "#0069A3",
   },
   btnRegistrar: {
-    backgroundColor: "#0069A3"
+    backgroundColor: "#0069A3",
   },
-  btnGoogle :{
-    backgroundColor: "#F4D73B"
-  }
+  btnGoogle: {
+    backgroundColor: "#F4D73B",
+  },
+  image: {
+    width: 400,
+    height: 400,
+    marginLeft: 25,
+  },
+  logo: {
+    width: 80,
+    height: 60,
+    alignItems: "center",
+  },
 });
