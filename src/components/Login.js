@@ -52,7 +52,6 @@ export const Login = ({ modalLogin, setModalLogin }) => {
   const showUserInfo = () => {
     if (user) {
       <View style={styles.ViewLogin}>
-        <Text style={styles.textAuth}>Welcome</Text>
         <Image style={styles.userimage}></Image>
         <Text style={styles.textAuth}>{user.name}</Text>
       </View>;
@@ -66,23 +65,71 @@ export const Login = ({ modalLogin, setModalLogin }) => {
       </View>
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
+        <View style={styles.campoUsuario}>
+          <Text style={styles.text}>Nombre de usuario</Text>
+          <TextInput
+            placeholder='@autonoma.edu.co'
+            placeholderTextColor={"#000000c0"}
+            style={styles.input}
+            value={userName}
+            onChangeText={setUserName}></TextInput>
+        </View>
+        <View style={styles.campoContraseña}>
+          <Text style={styles.text}>Contraseña </Text>
+          <TextInput
+            placeholder='**********'
+            placeholderTextColor={"#000000c0"}
+            style={styles.input}
+            value={userPassword}
+            onChangeText={setUserPassword}></TextInput>
+        </View>
+        <View>
+          <Pressable
+            onPress={() => {
+              setModalRegistro(true);
+            }}
+            style={[styles.btn]}>
+            <Text style={styles.subtitle}>Ingresar</Text>
+          </Pressable>
+          <Text>{"\n"}</Text>
+
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View
+              style={{
+                flex: 1,
+                height: 2.5,
+                backgroundColor: "#ccc",
+                marginLeft: 25,
+              }}
+            />
+            <Text style={{ marginHorizontal: 10, fontSize: 16 }}>or</Text>
+            <View
+              style={{
+                flex: 1,
+                height: 2.5,
+                backgroundColor: "#ccc",
+                marginRight: 25,
+              }}
+            />
+          </View>
+        </View>
         {user && <showUserInfo />}
         {user === null && (
           <>
-            <Text style={{ fontSize: 35, fontWeight: "bold" }}>Welcome</Text>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: "bold",
-                marginBottom: 20,
-                color: "gray",
-              }}></Text>
             <TouchableOpacity
               disabled={!request}
               onPress={() => {
                 promptAsync();
               }}>
-              <Image source={require("../../assets/loginImage.png")} style={{width:300,height:40}}></Image>
+              <Text>{"\n"}</Text>
+              <Image
+                source={require("../../assets/loginImage.png")}
+                style={{
+                  width: 300,
+                  height: 35,
+                  marginLeft: 30,
+                  borderRadius: 10,
+                }}></Image>
             </TouchableOpacity>
           </>
         )}
@@ -139,5 +186,46 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
+  },
+  campoUsuario: {
+    marginTop: 35,
+    marginLeft: 50,
+    marginRight: 50,
+    opacity: 0.9,
+    marginBottom: 20,
+    borderColor: "red",
+  },
+  campoContraseña: {
+    marginLeft: 50,
+    marginRight: 50,
+    opacity: 0.9,
+    borderColor: "black",
+  },
+  input: {
+    backgroundColor: "#FFFFFF",
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 10,
+    borderColor: "gray",
+    borderWidth: 1,
+  },
+  btnRegistrar: {
+    backgroundColor: "#0069A3",
+  },
+  btn: {
+    height: 45,
+    width: 280,
+    padding: 10,
+    marginTop: 30,
+    marginLeft: 40,
+    borderRadius: 10,
+    backgroundColor: "#0069a3",
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 22,
+    color: "#FFFFFF",
+    fontWeight: "500",
+    fontSize: 20,
   },
 });

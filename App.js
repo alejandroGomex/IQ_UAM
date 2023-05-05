@@ -52,46 +52,42 @@ export default function App() {
    */
 
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>
-        <View>
-          <Text style={styles.title}>
-            IQ TEST {""}
-            <Text style={styles.titleBold}>UAM® {"  "}</Text>
-            <Image
-              style={styles.logo}
-              source={require("./assets/logo-uam.png")}
-            />
-          </Text>
-        </View>
-        <View>
-          <Text style={styles.subtitle}>
-            {"\n"}
-            {"\n"}
-            Familia UAM {"\n"} tenenmos para ti este nuevo reto de {"\n"}
-            desafíos mentales que pondrán a prueba{"\n"}tus habilidades
-            cognitivas.
-            {"\n"}
-            {"\n"}
-            <Text style={styles.titleBold}>¿ESTÁS LISTO?</Text>
-          </Text>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={styles.title}>
+          IQ TEST {""}
+          <Text style={styles.titleBold}>UAM® {"  "}</Text>
           <Image
-            style={styles.image}
-            source={require("./assets/MentalI.png")}
+            style={styles.logo}
+            source={require("./assets/logo-uam.png")}
           />
-        </View>
+        </Text>
+      </View>
+      <View>
+        <Text style={styles.subtitle}>
+          {"\n"}
+          {"\n"}
+          Familia UAM {"\n"} tenenmos para ti este nuevo reto de {"\n"}
+          desafíos mentales que pondrán a prueba{"\n"}tus habilidades
+          cognitivas.
+          {"\n"}
+          {"\n"}
+          <Text style={styles.titleBold}>¿ESTÁS LISTO?</Text>
+        </Text>
+        <Image style={styles.image} source={require("./assets/MentalI.png")} />
+      </View>
 
-        <Pressable
-          style={styles.btn}
-          onPress={() => {
-            setModalLogin(true);
-          }}>
-          <Login modalLogin={modalLogin} setModalLogin={setModalLogin}></Login>
+      <Pressable
+        style={styles.btn}
+        onPress={() => {
+          setModalLogin(true);
+        }}>
+        <Login modalLogin={modalLogin} setModalLogin={setModalLogin}></Login>
 
-          <Text style={styles.subtitle}>INICIAR TEST</Text>
-        </Pressable>
+        <Text style={styles.subtitle}>INICIAR TEST</Text>
+      </Pressable>
 
-        <View style={styles.buttons}>
+      {/*} <View style={styles.buttons}>
           <Pressable
             style={[styles.btn, styles.btnAgregar]}
             onPress={() => {
@@ -118,15 +114,14 @@ export default function App() {
         setRegisteredUsers={setRegisteredUsers}
         user={user}
         setUser={setUser}></Registro>*/}
-      </SafeAreaView>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#0069a3",
+    flex: 1,
     marginTop: 25,
   },
   title: {
