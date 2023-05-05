@@ -1,0 +1,10 @@
+###
+POST http://localhost:5000/api/v1/user HTTP/1.1
+Content-Type: application/json
+
+{
+    "user_email": "test",
+    "user_password": "test"
+}
+###
+GET http://localhost:5000/api/v1/people HTTP/1.1
