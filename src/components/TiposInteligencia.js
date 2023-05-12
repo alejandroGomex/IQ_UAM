@@ -10,10 +10,13 @@ import {
   View,
   TextInput,
   Alert,
+  Image,
+  ScrollView,
 } from "react-native";
 import { Instrucciones } from "./Instrucciones";
 import { RuedaInteligencia } from "./RuedaInteligencia";
-
+import ColorBar from "../Tools/ColorBar";
+import { Line } from "../Tools/Line";
 
 export const TiposInteligencia = ({
   modalInteligencia,
@@ -24,44 +27,200 @@ export const TiposInteligencia = ({
 
   return (
     <Modal animationType='slide' visible={modalInteligencia}>
-      <View style={styles.square}>
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            color: "white",
-            marginTop: 60,
-            marginLeft: 50,
-          }}>
-          Gestor de emergencias UAM®
-        </Text>
-        <Text>Hola algo aqui es el texto de los tipos de inteligencia </Text>
+      <View>
+        <ColorBar></ColorBar>
       </View>
-      <View style={styles.buttons}>
-        <Pressable
-          style={[styles.btn, styles.btnAgregar]}
-          onPress={() => {
-            setModalInstruccion(true);
-          }}>
-          <Instrucciones
-            modalInstruccion={modalInstruccion}
-            setModalInstruccion={setModalInstruccion}></Instrucciones>
+      <ScrollView>
+        <View>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/corporal.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              la inteligencia corporal es la capacidad
+              {"\n"}
+              de conectar el cuerpo y la mente para
+              {"\n"}
+              lograr un cometido perfecto. va desde
+              {"\n"}
+              el control de los movimientos y luego se
+              {"\n"}
+              emplea el cuerpo de manera competente
+            </Text>
+          </View>
+          <Line></Line>
 
-          <Text style={styles.text}>Ingresar</Text>
-        </Pressable>
-        <Pressable
-          style={[styles.btn, styles.btnAgregar]}
-          onPress={() => {
-            setModalRueda(true);
-          }}>
-          <RuedaInteligencia
-            modalRueda={modalRueda}
-            setModalRueda={setModalRueda}></RuedaInteligencia>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/interpersonal.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia Interpersonal describe el
+              {"\n"}
+              poder concoerse mejor a si mismos .{"\n"}
+              Esta inteligencia hace que las personas
+              {"\n"}
+              sean más autonomas.capacidad de
+              {"\n"}comprender sentimientos emociones
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/verbal.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia verbal se rige por las
+              {"\n"}
+              preferencias de leer y expresarse .{"\n"}
+              Se desarrolla la habilidad para aprender
+              {"\n"}
+              textos, aprender idiomas y fluidez
+              {"\n"}verbal
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/logica.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia lógica o matemática es
+              {"\n"}
+              un tipo de inteligencia donde se puede
+              {"\n"}
+              evidenciar la habilidad con los números
+              {"\n"} y con los problemas a solucionar por
+              {"\n"}medio del analisis y la lógica
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/naturalista.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia naturalista se refiere a la
+              {"\n"}
+              capacidad de observar y comprender la
+              {"\n"}
+              naturaleza. Tiene la capacidad de
+              {"\n"}
+              observar, identificar y comprender los
+              {"\n"} patrones y sistemas naturales, como:
+              {"\n"} los seres vivos y el medio ambiente
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/intrapersonal.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia intrapersonal revela
+              {"\n"}
+              la capacidad de comprender y{"\n"}reflexionar sobre uno mismo,
+              contando:{"\n"}
+              pensamientos,y motivaciones .Las
+              {"\n"}
+              personas con esta inteligencia toman
+              {"\n"}
+              decisiones basadas en el yo mismo.
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/visual.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia visual denota la
+              {"\n"}
+              capacidad de comprender y crear
+              {"\n"}
+              imágenes visuales y espaciales. las
+              {"\n"}
+              personas con esta inteligencia pueden
+              {"\n"}
+              ser buenos artistas,diseñadores
+              {"\n"} o ingenieros.
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={require("../../assets/musical.png")}
+              style={styles.image}
+            />
+            <Text style={{ marginLeft: 10 }}>
+              {"\n"}
+              {"\n"}
+              La inteligencia musical tiene
+              {"\n"}
+              capacidad de interpretar y crear
+              {"\n"}
+              melodías , ritmos y analisis de patrones
+              {"\n"}
+              personas con esta inteligencia la
+              {"\n"}
+              desarrollan por medio de la practica
+            </Text>
+          </View>
+          <Line></Line>
+          <View style={styles.buttons}>
+            <View>
+              <Pressable
+                style={[styles.btn, styles.btnAgregar]}
+                onPress={() => {
+                  setModalInstruccion(true);
+                }}>
+                <Instrucciones
+                  modalInstruccion={modalInstruccion}
+                  setModalInstruccion={setModalInstruccion}></Instrucciones>
 
-          <Text style={styles.text}>Regresar</Text>
-        </Pressable>
-      </View>
+                <Text style={styles.text}>Continuar</Text>
+              </Pressable>
+            </View>
+            <View>
+              <Pressable
+                style={[styles.btn, styles.btnAgregar]}
+                onPress={() => {
+                  setModalRueda(true);
+                }}>
+                <RuedaInteligencia
+                  modalRueda={modalRueda}
+                  setModalRueda={setModalRueda}></RuedaInteligencia>
+
+                <Text style={styles.text}>Regresar</Text>
+              </Pressable>
+            </View>
+          </View>
+          <Text>{"\n"}</Text>
+          <Text>{"\n"}</Text>
+          <Text>{"\n"}</Text>
+        </View>
+      </ScrollView>
     </Modal>
   );
 };
@@ -152,5 +311,12 @@ const styles = StyleSheet.create({
   },
   btnRegistrar: {
     backgroundColor: "#0069A3",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginLeft: 10,
+    borderColor: "gray",
+    marginTop: 20,
   },
 });

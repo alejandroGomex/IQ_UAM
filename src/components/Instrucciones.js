@@ -10,23 +10,15 @@ import {
 } from "react-native";
 import { TiposInteligencia } from "./TiposInteligencia";
 import React, { useState, useEffect } from "react";
+import ColorBar from "../Tools/ColorBar";
 export const Instrucciones = ({ modalInstruccion, setModalInstruccion }) => {
   const [modalInteligencia, setModalInteligencia] = useState(false);
   return (
     <Modal animationType='slide' visible={modalInstruccion}>
-      <View style={styles.square}>
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            color: "white",
-            marginTop: 60,
-            marginLeft: 50,
-          }}>
-          Gestor de emergencias UAM®
-        </Text>
-        <Text>Hola algo aqui va lo de las Instrucciones </Text>
+      <ColorBar></ColorBar>
+      <View>
+        <Text style={styles.title}>Instrucciones</Text>
+        
       </View>
       <View style={styles.buttons}>
         <Pressable

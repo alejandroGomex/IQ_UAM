@@ -21,7 +21,7 @@ export const RuedaInteligencia = ({ modalRueda, setModalRueda }) => {
       <View>
         <ColorBar></ColorBar>
         <Text style={styles.title}>
-          ¿Sabías que hay 8 tipos de inteligencia?
+          ¿Sabías que... hay 8 tipos de inteligencia?
         </Text>
       </View>
       <View>
@@ -29,6 +29,10 @@ export const RuedaInteligencia = ({ modalRueda, setModalRueda }) => {
           <Image
             style={styles.image}
             source={require("../../assets/inteligencias.png")}
+          />
+          <Image
+            style={styles.subimage}
+            source={require("../../assets/acreditacion.png")}
           />
         </View>
       </View>
@@ -42,7 +46,7 @@ export const RuedaInteligencia = ({ modalRueda, setModalRueda }) => {
             modalInteligencia={modalInteligencia}
             setModalInteligencia={setModalInteligencia}></TiposInteligencia>
 
-          <Text style={styles.text}>Ingresar</Text>
+          <Text style={styles.subtitle}>Continuar</Text>
         </Pressable>
       </View>
     </Modal>
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontFamily: "Arial",
     fontWeight: "bold",
     color: "black",
@@ -98,7 +102,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12,
-    fontFamily: "Arial",
     fontWeight: "bold",
     color: "black",
     marginTop: 0,
@@ -127,8 +130,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 50,
     borderRadius: 45,
-    marginRight: 20,
-    marginLeft: 127,
+    marginLeft: 120,
   },
   btnAgregar: {
     backgroundColor: "#0069A3",
@@ -138,7 +140,18 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 400,
-    height: 400,
+    height: 450,
     marginLeft: 10,
+  },
+  subimage: {
+    width: 150,
+    height: 40,
+    marginLeft: 130,
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 16,
+    color: "#FFFFFF",
+    fontWeight: "500",
   },
 });
