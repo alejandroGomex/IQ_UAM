@@ -7,30 +7,87 @@ import {
   Text,
   View,
   TextInput,
+  Image,
 } from "react-native";
 import { TiposInteligencia } from "./TiposInteligencia";
+import { Terminos } from "./Terminos";
 import React, { useState, useEffect } from "react";
 import ColorBar from "../Tools/ColorBar";
 export const Instrucciones = ({ modalInstruccion, setModalInstruccion }) => {
   const [modalInteligencia, setModalInteligencia] = useState(false);
+  const [modalTerminos, setModalTerminos] = useState(false);
   return (
     <Modal animationType='slide' visible={modalInstruccion}>
       <ColorBar></ColorBar>
-      <View>
-        <Text style={styles.title}>Instrucciones</Text>
-        
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <Image
+          source={require("../../assets/danger.png")}
+          style={{ width: 50, height: 50, marginLeft: 90, marginTop: 30 }}
+        />
+        <Text style={styles.title}>Instrucciones :</Text>
       </View>
+
+      <View style={{ flexDirection: "row" }}>
+        <Image
+          source={require("../../assets/clock.png")}
+          style={styles.imageInst}
+        />
+        <Text style={{ marginLeft: 10 }}>
+          {"\n"}
+          {"\n"}
+          Se dispondrán de 20 minutos para
+          {"\n"}
+          realizar la prueba en su totalidad . las{"\n"}
+          preguntas que no sean respondidas ,{"\n"}
+          contarán como incorrectas
+          {"\n"}
+        </Text>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <Image
+          source={require("../../assets/question.png")}
+          style={styles.imageInst}
+        />
+        <Text style={{ marginLeft: 10 }}>
+          {"\n"}
+          {"\n"}
+          La pantalla le mostrará al usuario
+          {"\n"}
+          una pregunta con 6 opciones para {"\n"}
+          responder de las cuales podrá solo,{"\n"}
+          seleccionar una
+          {"\n"}
+        </Text>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <Image
+          source={require("../../assets/answer.png")}
+          style={styles.imageInst}
+        />
+        <Text style={{ marginLeft: 10 }}>
+          {"\n"}
+          {"\n"}
+          Al responder la ultima pregunta
+          {"\n"}
+          se arrojarán los resultados con{"\n"}
+          el puntaje de IQ alcanzado y la{"\n"}
+          cantidad de preguntas correctas{"\n"}e incorrectas.Por esta razón el
+          {"\n"}
+          test puede realizarse solo una vez.
+        </Text>
+      </View>
+
       <View style={styles.buttons}>
         <Pressable
           style={[styles.btn, styles.btnAgregar]}
           onPress={() => {
-            setModalInteligencia(true);
+            setModalTerminos(true);
           }}>
-          <TiposInteligencia
-            modalInteligencia={modalInteligencia}
-            setModalInteligencia={setModalInteligencia}></TiposInteligencia>
+          <Terminos
+            modalTerminos={modalTerminos}
+            setModalTerminos={setModalTerminos}></Terminos>
 
-          <Text style={styles.text}>Ingresar</Text>
+          <Text style={styles.subtitle}>Continuar</Text>
         </Pressable>
         <Pressable
           style={[styles.btn, styles.btnAgregar]}
@@ -54,28 +111,20 @@ const styles = StyleSheet.create({
     fontFamily: "Arial",
     fontWeight: "bold",
     color: "black",
-    marginTop: 100,
-    marginLeft: 50,
+    marginTop: 70,
+    marginLeft: 20,
     marginRight: 50,
     marginBottom: 20,
     textAlign: "center",
   },
-  backCover: {
-    position: "absolute",
-    marginTop: 100,
-    top: 0,
-    bottom: 0,
-    left: 10,
-    right: 10,
-    opacity: 0.6,
-    backgroundColor: "rgba(52,52,52,alpha)",
+  image: {
+    width: 50,
+    height: 50,
+
+    borderColor: "gray",
+    marginTop: 60,
   },
-  square: {
-    width: 500,
-    height: 150,
-    justifyContent: "center",
-    backgroundColor: "#0069A3",
-  },
+
   input: {
     backgroundColor: "#FFFFFF",
     padding: 15,
@@ -122,11 +171,25 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     marginRight: 20,
     marginLeft: 127,
+    marginTop: 85,
   },
   btnAgregar: {
     backgroundColor: "#0069A3",
   },
   btnRegistrar: {
     backgroundColor: "#0069A3",
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 16,
+    color: "#FFFFFF",
+    fontWeight: "500",
+  },
+  imageInst: {
+    width: 60,
+    height: 60,
+    marginLeft: 50,
+    borderColor: "gray",
+    marginTop: 35,
   },
 });
