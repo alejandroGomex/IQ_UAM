@@ -7,7 +7,9 @@ import {
   Text,
   View,
   TextInput,
+  Image,
 } from "react-native";
+import ColorBar from "../Tools/ColorBar";
 import { TiposInteligencia } from "./TiposInteligencia";
 import React, { useState, useEffect } from "react";
 
@@ -16,19 +18,19 @@ export const RuedaInteligencia = ({ modalRueda, setModalRueda }) => {
 
   return (
     <Modal animationType='slide' visible={modalRueda}>
-      <View style={styles.square}>
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: "Arial",
-            fontWeight: "bold",
-            color: "white",
-            marginTop: 60,
-            marginLeft: 50,
-          }}>
-          Gestor de emergencias UAM®
+      <View>
+        <ColorBar></ColorBar>
+        <Text style={styles.title}>
+          ¿Sabías que hay 8 tipos de inteligencia?
         </Text>
-        <Text>Hola algo aqui va lo de la rueda de inteliencias </Text>
+      </View>
+      <View>
+        <View>
+          <Image
+            style={styles.image}
+            source={require("../../assets/inteligencias.png")}
+          />
+        </View>
       </View>
       <View style={styles.buttons}>
         <Pressable
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     fontFamily: "Arial",
     fontWeight: "bold",
     color: "black",
-    marginTop: 100,
+    marginTop: 30,
     marginLeft: 50,
     marginRight: 50,
     marginBottom: 20,
@@ -133,5 +135,10 @@ const styles = StyleSheet.create({
   },
   btnRegistrar: {
     backgroundColor: "#0069A3",
+  },
+  image: {
+    width: 400,
+    height: 400,
+    marginLeft: 10,
   },
 });

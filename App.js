@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import Gif from "react-native-gif";
+
 import {
   ImageBackground,
   Pressable,
@@ -15,7 +14,7 @@ import {
   ScrollView,
 } from "react-native";
 import { RuedaInteligencia } from "./src/components/RuedaInteligencia";
-import { TiposInteligencia } from "./src/components/TiposInteligencia";
+//import { TiposInteligencia } from "./src/components/TiposInteligencia";
 import { Login } from "./src/components/Login";
 
 export default function App() {
@@ -87,19 +86,18 @@ export default function App() {
         <Text style={styles.subtitle}>INICIAR TEST</Text>
       </Pressable>
 
-      {/*} <View style={styles.buttons}>
-          <Pressable
-            style={[styles.btn, styles.btnAgregar]}
-            onPress={() => {
-              setModalRueda(true);
-            }}>
-            <RuedaInteligencia
-              modalRueda={modalRueda}
-              setModalRueda={setModalRueda}></RuedaInteligencia>
+      <Pressable
+        style={[styles.btn, styles.btnAgregar]}
+        onPress={() => {
+          setModalRueda(true);
+        }}>
+        <RuedaInteligencia
+          modalRueda={modalRueda}
+          setModalRueda={setModalRueda}></RuedaInteligencia>
 
-            <Text style={styles.text}>Ingresar</Text>
-          </Pressable>
-          <Pressable
+        <Text style={styles.text}>Ingresar</Text>
+      </Pressable>
+      {/*<Pressable
             onPress={() => {
               setModalRegistro(true);
             }}

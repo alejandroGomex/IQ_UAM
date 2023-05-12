@@ -2,6 +2,8 @@ import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import React, { useState, useEffect } from "react";
 import ColorBar from "../Tools/ColorBar";
+import { RuedaInteligencia } from "./RuedaInteligencia";
+
 import {
   ImageBackground,
   Pressable,
@@ -23,6 +25,8 @@ export const Login = ({ modalLogin, setModalLogin }) => {
   const [userPassword, setUserPassword] = useState("");
   const [accesToken, setAccesToken] = React.useState(null);
   const [user, setUser] = React.useState(null);
+  const [modalRueda, setModalRueda] = React.useState(false);
+
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
       "515494001332-aksh9pt6qig1e612akteu9s1ho6ovj3e.apps.googleusercontent.com",
@@ -85,10 +89,13 @@ export const Login = ({ modalLogin, setModalLogin }) => {
         </View>
         <View>
           <Pressable
+            style={[styles.btn]}
             onPress={() => {
-              setModalRegistro(true);
-            }}
-            style={[styles.btn]}>
+              setModalRueda(true);
+            }}>
+            <RuedaInteligencia
+              modalRueda={modalRueda}
+              setModalRueda={setModalRueda}></RuedaInteligencia>
             <Text style={styles.subtitle}>Ingresar</Text>
           </Pressable>
           <Text>{"\n"}</Text>

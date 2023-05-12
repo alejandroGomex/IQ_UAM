@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { Instrucciones } from "./Instrucciones";
 import { RuedaInteligencia } from "./RuedaInteligencia";
+
+
 export const TiposInteligencia = ({
   modalInteligencia,
   setModalInteligencia,
