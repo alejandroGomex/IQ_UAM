@@ -1,5 +1,4 @@
 import {
-  ImageBackground,
   Pressable,
   Modal,
   SafeAreaView,
@@ -8,17 +7,17 @@ import {
   View,
   TextInput,
   Image,
-  CheckBox,
   Button,
 } from "react-native";
+import { CheckBox } from "../Tools/CheckBox";
 import ColorBar from "../Tools/ColorBar";
-import { TiposInteligencia } from "./TiposInteligencia";
-import { Instrucciones } from "./Instrucciones";
+import { Pregunta } from "./Pregunta";
 import React, { useState, useEffect } from "react";
 
 export const Terminos = ({ modalTerminos, setModalTerminos }) => {
   const [modalInstruccion, setModalInstruccion] = useState(false);
   const [modalPregunta, setModalPregunta] = useState(false);
+  const [isChecked, setChecked] = useState(false);
 
   return (
     <Modal animationType='slide' visible={modalTerminos}>
@@ -46,7 +45,20 @@ export const Terminos = ({ modalTerminos, setModalTerminos }) => {
           {"\n"} ¡nuestra página es el lugar perfecto para hacerlo!
         </Text>
       </View>
-      <View></View>
+      <CheckBox></CheckBox>
+      <View>
+        <Pressable
+          style={[styles.btn, styles.btnAgregar]}
+          onPress={() => {
+            setModalPregunta(true);
+          }}>
+          <Pregunta
+            modalPregunta={modalPregunta}
+            setModalPregunta={setModalPregunta}></Pregunta>
+
+          <Text style={styles.text}>Regresar</Text>
+        </Pressable>
+      </View>
     </Modal>
   );
 };
@@ -107,5 +119,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#FFFFFF",
     fontWeight: "500",
+  },
+  section: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  paragraph: {
+    fontSize: 15,
+  },
+  checkbox: {
+    margin: 8,
   },
 });
