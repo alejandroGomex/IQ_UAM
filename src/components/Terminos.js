@@ -12,6 +12,7 @@ import {
 import { CheckBox } from "../Tools/CheckBox";
 import ColorBar from "../Tools/ColorBar";
 import { Pregunta } from "./Pregunta";
+import { Instrucciones } from "./Instrucciones";
 import React, { useState, useEffect } from "react";
 
 export const Terminos = ({ modalTerminos, setModalTerminos }) => {
@@ -46,9 +47,20 @@ export const Terminos = ({ modalTerminos, setModalTerminos }) => {
         </Text>
       </View>
       <CheckBox></CheckBox>
-      <View>
+      <View style={styles.buttons}>
         <Pressable
           style={[styles.btn, styles.btnAgregar]}
+          onPress={() => {
+            setModalInstruccion(true);
+          }}>
+          <Instrucciones
+            modalInstruccion={modalInstruccion}
+            setModalInstruccion={setModalInstruccion}></Instrucciones>
+
+          <Text style={styles.subtitle}>Regresar</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.btn2, styles.btnAgregar]}
           onPress={() => {
             setModalPregunta(true);
           }}>
@@ -56,7 +68,7 @@ export const Terminos = ({ modalTerminos, setModalTerminos }) => {
             modalPregunta={modalPregunta}
             setModalPregunta={setModalPregunta}></Pregunta>
 
-          <Text style={styles.text}>Regresar</Text>
+          <Text style={styles.subtitle}>Continuar</Text>
         </Pressable>
       </View>
     </Modal>
@@ -96,9 +108,18 @@ const styles = StyleSheet.create({
   },
   btn: {
     paddingVertical: 15,
-    paddingHorizontal: 50,
+    paddingHorizontal: 40,
     borderRadius: 45,
-    marginLeft: 120,
+    marginRight: 70,
+    marginLeft: 30,
+    marginTop: 5,
+  },
+  btn2: {
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 45,
+    marginRight: 80,
+    marginTop: 5,
   },
   btnAgregar: {
     backgroundColor: "#0069A3",

@@ -16,6 +16,7 @@ import ColorBar from "../Tools/ColorBar";
 export const Instrucciones = ({ modalInstruccion, setModalInstruccion }) => {
   const [modalInteligencia, setModalInteligencia] = useState(false);
   const [modalTerminos, setModalTerminos] = useState(false);
+
   return (
     <Modal animationType='slide' visible={modalInstruccion}>
       <ColorBar></ColorBar>
@@ -81,6 +82,17 @@ export const Instrucciones = ({ modalInstruccion, setModalInstruccion }) => {
         <Pressable
           style={[styles.btn, styles.btnAgregar]}
           onPress={() => {
+            setModalInteligencia(true);
+          }}>
+          <TiposInteligencia
+            modalInteligencia={modalInteligencia}
+            setModalInteligencia={setModalInteligencia}></TiposInteligencia>
+
+          <Text style={styles.subtitle}>Regresar</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.btn2, styles.btnAgregar]}
+          onPress={() => {
             setModalTerminos(true);
           }}>
           <Terminos
@@ -89,11 +101,6 @@ export const Instrucciones = ({ modalInstruccion, setModalInstruccion }) => {
 
           <Text style={styles.subtitle}>Continuar</Text>
         </Pressable>
-        <Pressable
-          style={[styles.btn, styles.btnAgregar]}
-          onPress={() => {
-            setModalInteligencia(true);
-          }}></Pressable>
       </View>
     </Modal>
   );
@@ -167,11 +174,18 @@ const styles = StyleSheet.create({
   },
   btn: {
     paddingVertical: 15,
-    paddingHorizontal: 50,
+    paddingHorizontal: 40,
     borderRadius: 45,
-    marginRight: 20,
-    marginLeft: 127,
-    marginTop: 85,
+    marginRight: 70,
+    marginLeft: 30,
+    marginTop: 70,
+  },
+  btn2: {
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 45,
+    marginRight: 80,
+    marginTop: 70,
   },
   btnAgregar: {
     backgroundColor: "#0069A3",

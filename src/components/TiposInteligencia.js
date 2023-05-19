@@ -189,32 +189,29 @@ export const TiposInteligencia = ({
           </View>
           <Line></Line>
           <View style={styles.buttons}>
-            <View>
-              <Pressable
-                style={[styles.btn, styles.btnAgregar]}
-                onPress={() => {
-                  setModalInstruccion(true);
-                }}>
-                <Instrucciones
-                  modalInstruccion={modalInstruccion}
-                  setModalInstruccion={setModalInstruccion}></Instrucciones>
+            <Pressable
+              style={[styles.btn, styles.btnAgregar]}
+              onPress={() => {
+                setModalRueda(true);
+              }}>
+              <RuedaInteligencia
+                modalRueda={modalRueda}
+                setModalRueda={setModalRueda}></RuedaInteligencia>
 
-                <Text style={styles.text}>Continuar</Text>
-              </Pressable>
-            </View>
-            <View>
-              <Pressable
-                style={[styles.btn, styles.btnAgregar]}
-                onPress={() => {
-                  setModalRueda(true);
-                }}>
-                <RuedaInteligencia
-                  modalRueda={modalRueda}
-                  setModalRueda={setModalRueda}></RuedaInteligencia>
+              <Text style={styles.subtitle}>Regresar</Text>
+            </Pressable>
 
-                <Text style={styles.text}>Regresar</Text>
-              </Pressable>
-            </View>
+            <Pressable
+              style={[styles.btn2, styles.btnAgregar]}
+              onPress={() => {
+                setModalInstruccion(true);
+              }}>
+              <Instrucciones
+                modalInstruccion={modalInstruccion}
+                setModalInstruccion={setModalInstruccion}></Instrucciones>
+
+              <Text style={styles.subtitle}>Continuar</Text>
+            </Pressable>
           </View>
           <Text>{"\n"}</Text>
           <Text>{"\n"}</Text>
@@ -243,28 +240,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: "center",
   },
-  backCover: {
-    position: "absolute",
-    marginTop: 100,
-    top: 0,
-    bottom: 0,
-    left: 10,
-    right: 10,
-    opacity: 0.6,
-    backgroundColor: "rgba(52,52,52,alpha)",
-  },
-  square: {
-    width: 500,
-    height: 150,
-    justifyContent: "center",
-    backgroundColor: "#0069A3",
-  },
-  input: {
-    backgroundColor: "#FFFFFF",
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
+
   text_btn_user_add: {
     color: "#FCFCFC",
     textAlign: "center",
@@ -272,28 +248,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textTransform: "uppercase",
   },
-  text: {
-    fontSize: 12,
-    fontFamily: "Arial",
-    fontWeight: "bold",
-    color: "black",
-    marginTop: 0,
-  },
-  campoUsuario: {
-    marginTop: 20,
-    marginLeft: 50,
-    marginRight: 50,
-    opacity: 0.9,
-    marginBottom: 50,
-    borderColor: "black",
-  },
-  campoContraseña: {
-    marginLeft: 50,
-    marginRight: 50,
-    opacity: 0.9,
-    marginBottom: 50,
-    borderColor: "black",
-  },
+
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -301,10 +256,18 @@ const styles = StyleSheet.create({
   },
   btn: {
     paddingVertical: 15,
-    paddingHorizontal: 50,
+    paddingHorizontal: 40,
     borderRadius: 45,
-    marginRight: 20,
-    marginLeft: 127,
+    marginRight: 70,
+    marginLeft: 30,
+    marginTop: 40,
+  },
+  btn2: {
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 45,
+    marginRight: 80,
+    marginTop: 40,
   },
   btnAgregar: {
     backgroundColor: "#0069A3",
@@ -318,5 +281,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     borderColor: "gray",
     marginTop: 20,
+  },
+  subtitle: {
+    textAlign: "center",
+    fontSize: 16,
+    color: "#FFFFFF",
+    fontWeight: "500",
   },
 });

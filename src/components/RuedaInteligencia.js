@@ -81,46 +81,7 @@ const styles = StyleSheet.create({
     opacity: 0.6,
     backgroundColor: "rgba(52,52,52,alpha)",
   },
-  square: {
-    width: 500,
-    height: 150,
-    justifyContent: "center",
-    backgroundColor: "#0069A3",
-  },
-  input: {
-    backgroundColor: "#FFFFFF",
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  text_btn_user_add: {
-    color: "#FCFCFC",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 16,
-    textTransform: "uppercase",
-  },
-  text: {
-    fontSize: 12,
-    fontWeight: "bold",
-    color: "black",
-    marginTop: 0,
-  },
-  campoUsuario: {
-    marginTop: 20,
-    marginLeft: 50,
-    marginRight: 50,
-    opacity: 0.9,
-    marginBottom: 50,
-    borderColor: "black",
-  },
-  campoContraseña: {
-    marginLeft: 50,
-    marginRight: 50,
-    opacity: 0.9,
-    marginBottom: 50,
-    borderColor: "black",
-  },
+
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",

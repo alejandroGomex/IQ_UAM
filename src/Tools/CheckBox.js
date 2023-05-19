@@ -5,18 +5,17 @@ import { StyleSheet, Text, View } from "react-native";
 export const CheckBox = () => {
   const [isChecked, setChecked] = useState(false);
   return (
-    <View style={styles.container}>
-      <View style={styles.section}>
-        <Checkbox
-          style={styles.checkbox}
-          value={isChecked}
-          onValueChange={setChecked}
-          color={isChecked ? "#4630EB" : undefined}
-        />
-        <Text style={styles.paragraph}>
-          Acepto terminos y tratamiento de{"\n"}datos
-        </Text>
-      </View>
+    <View style={styles.section}>
+      <Checkbox
+        style={styles.checkbox}
+        value={isChecked}
+        onValueChange={setChecked}
+        color={isChecked ? "#4630EB" : undefined}
+      />
+      <Text style={styles.title}>
+        Acepto terminos y {"\n"}
+        tratamiento de datos
+      </Text>
     </View>
   );
 };
@@ -31,10 +30,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  paragraph: {
-    fontSize: 15,
+
+  title: {
+    fontSize: 13,
+    fontFamily: "Arial",
+    fontWeight: "bold",
+    color: "gray",
+    marginTop: 20,
+    marginLeft: 15,
+    marginRight: 50,
+    textAlign: "center",
   },
   checkbox: {
-    margin: 8,
+    marginLeft:130,
   },
 });
